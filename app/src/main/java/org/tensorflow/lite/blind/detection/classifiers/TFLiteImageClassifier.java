@@ -3,8 +3,10 @@ package org.tensorflow.lite.blind.detection.classifiers;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 
-import com.lampa.emotionrecognition.classifiers.behaviors.TFLiteImageClassification;
-import com.lampa.emotionrecognition.utils.ImageUtils;
+
+
+import org.tensorflow.lite.blind.detection.classifiers.behaviors.TFLiteImageClassification;
+import org.tensorflow.lite.blind.detection.utils.ImageUtils;
 
 import java.util.Formatter;
 import java.util.HashMap;

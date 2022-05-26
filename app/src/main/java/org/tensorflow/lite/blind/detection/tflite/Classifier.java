@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-package org.tensorflow.lite.examples.detection.tflite;
+package org.tensorflow.lite.blind.detection.tflite;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -24,7 +24,7 @@ import android.os.Trace;
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.Interpreter;
 
-import org.tensorflow.lite.examples.detection.env.Logger;
+import org.tensorflow.lite.blind.detection.env.Logger;
 import org.tensorflow.lite.gpu.GpuDelegate;
 import org.tensorflow.lite.nnapi.NnApiDelegate;
 import org.tensorflow.lite.support.common.FileUtil;

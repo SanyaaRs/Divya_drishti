@@ -3,9 +3,10 @@ package org.tensorflow.lite.blind.detection.classifiers;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 
-import com.lampa.emotionrecognition.classifiers.behaviors.ClassifyBehavior;
+
 
 import org.tensorflow.lite.Interpreter;
+import org.tensorflow.lite.blind.detection.classifiers.behaviors.ClassifyBehavior;
 import org.tensorflow.lite.gpu.GpuDelegate;
 
 import java.io.FileInputStream;

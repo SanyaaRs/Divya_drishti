@@ -1,5 +1,5 @@
 
-package org.tensorflow.lite.examples.detection;
+package org.tensorflow.lite.blind.detection;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,8 +12,6 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.os.SystemClock;
 import android.speech.tts.TextToSpeech;
 import android.util.Size;
@@ -21,7 +19,6 @@ import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -33,14 +30,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import org.tensorflow.lite.examples.detection.customview.OverlayView;
-import org.tensorflow.lite.examples.detection.customview.OverlayView.DrawCallback;
-import org.tensorflow.lite.examples.detection.env.BorderedText;
-import org.tensorflow.lite.examples.detection.env.ImageUtils;
-import org.tensorflow.lite.examples.detection.env.Logger;
-import org.tensorflow.lite.examples.detection.tflite.Detector;
-import org.tensorflow.lite.examples.detection.tflite.TFLiteObjectDetectionAPIModel;
-import org.tensorflow.lite.examples.detection.tracking.MultiBoxTracker;
+import org.tensorflow.lite.blind.detection.customview.OverlayView;
+import org.tensorflow.lite.blind.detection.customview.OverlayView.DrawCallback;
+import org.tensorflow.lite.blind.detection.env.BorderedText;
+import org.tensorflow.lite.blind.detection.env.ImageUtils;
+import org.tensorflow.lite.blind.detection.env.Logger;
+import org.tensorflow.lite.blind.detection.tflite.Detector;
+import org.tensorflow.lite.blind.detection.tflite.TFLiteObjectDetectionAPIModel;
+import org.tensorflow.lite.blind.detection.tracking.MultiBoxTracker;
 
 /**
  * An activity that uses a TensorFlowMultiBoxDetector and ObjectTracker to detect and then track

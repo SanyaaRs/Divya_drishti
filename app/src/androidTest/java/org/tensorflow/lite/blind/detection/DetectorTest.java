@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.tensorflow.lite.examples.detection;
+package org.tensorflow.lite.blind.detection;
 
 import static com.google.common.truth.Truth.assertThat;
 import static java.lang.Math.abs;
@@ -39,10 +39,10 @@ import java.util.Scanner;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.tensorflow.lite.examples.detection.env.ImageUtils;
-import org.tensorflow.lite.examples.detection.tflite.Detector;
-import org.tensorflow.lite.examples.detection.tflite.Detector.Recognition;
-import org.tensorflow.lite.examples.detection.tflite.TFLiteObjectDetectionAPIModel;
+import org.tensorflow.lite.blind.detection.env.ImageUtils;
+import org.tensorflow.lite.blind.detection.tflite.Detector;
+import org.tensorflow.lite.blind.detection.tflite.Detector.Recognition;
+import org.tensorflow.lite.blind.detection.tflite.TFLiteObjectDetectionAPIModel;
 
 /** Golden test for Object Detection Reference app. */
 @RunWith(AndroidJUnit4.class)

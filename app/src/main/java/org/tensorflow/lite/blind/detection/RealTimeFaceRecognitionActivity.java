@@ -1,4 +1,4 @@
-package org.tensorflow.lite.examples.detection;
+package org.tensorflow.lite.blind.detection;
 
 import android.Manifest;
 import android.annotation.SuppressLint;

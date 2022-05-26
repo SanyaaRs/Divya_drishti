@@ -13,11 +13,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-package org.tensorflow.lite.examples.detection.customview;
+package org.tensorflow.lite.blind.detection.customview;
 
 
 
-import org.tensorflow.lite.examples.detection.tflite.Classifier;
+import org.tensorflow.lite.blind.detection.tflite.Classifier;
 
 import java.util.List;
 

@@ -26,14 +26,17 @@ import androidx.core.content.FileProvider;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.face.FirebaseVisionFace;
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetector;
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetectorOptions;
-import com.lampa.emotionrecognition.classifiers.TFLiteImageClassifier;
-import com.lampa.emotionrecognition.utils.ImageUtils;
-import com.lampa.emotionrecognition.utils.SortingHelper;
+
+
+import org.tensorflow.lite.blind.detection.classifiers.TFLiteImageClassifier;
+import org.tensorflow.lite.blind.detection.utils.ImageUtils;
+import org.tensorflow.lite.blind.detection.utils.SortingHelper;
 
 import java.io.File;
 import java.io.IOException;

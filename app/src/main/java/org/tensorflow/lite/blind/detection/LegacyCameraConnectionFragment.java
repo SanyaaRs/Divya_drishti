@@ -1,4 +1,4 @@
-package org.tensorflow.lite.examples.detection;
+package org.tensorflow.lite.blind.detection;
 
 /*
  * Copyright 2019 The TensorFlow Authors. All Rights Reserved.
@@ -33,9 +33,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import org.tensorflow.lite.examples.detection.customview.AutoFitTextureView;
-import org.tensorflow.lite.examples.detection.env.ImageUtils;
-import org.tensorflow.lite.examples.detection.env.Logger;
+import org.tensorflow.lite.blind.detection.customview.AutoFitTextureView;
+import org.tensorflow.lite.blind.detection.env.ImageUtils;
+import org.tensorflow.lite.blind.detection.env.Logger;
 
 import java.io.IOException;
 import java.util.List;

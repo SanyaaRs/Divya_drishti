@@ -1,4 +1,4 @@
-package org.tensorflow.lite.examples.detection.tracking;
+package org.tensorflow.lite.blind.detection.tracking;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -16,10 +16,9 @@ import android.util.TypedValue;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import org.tensorflow.lite.examples.detection.env.BorderedText;
-import org.tensorflow.lite.examples.detection.env.ImageUtils;
-import org.tensorflow.lite.examples.detection.env.Logger;
-import org.tensorflow.lite.examples.detection.tflite.Detector.Recognition;
+import org.tensorflow.lite.blind.detection.env.BorderedText;
+import org.tensorflow.lite.blind.detection.env.Logger;
+import org.tensorflow.lite.blind.detection.tflite.Detector.Recognition;
 
 /** A tracker that handles non-max suppression and matches existing objects to new detections. */
 public class MultiBoxTracker {

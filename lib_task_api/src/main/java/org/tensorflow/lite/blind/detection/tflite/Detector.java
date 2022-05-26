@@ -1,5 +1,5 @@
 
-package org.tensorflow.lite.examples.detection.tflite;
+package org.tensorflow.lite.blind.detection.tflite;
 
 import android.graphics.Bitmap;
 import android.graphics.RectF;

@@ -1,4 +1,4 @@
-package org.tensorflow.lite.examples.detection;
+package org.tensorflow.lite.blind.detection;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Intent;

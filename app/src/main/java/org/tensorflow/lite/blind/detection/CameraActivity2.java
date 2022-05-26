@@ -1,4 +1,4 @@
-package org.tensorflow.lite.examples.detection;
+package org.tensorflow.lite.blind.detection;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.tensorflow.lite.examples.detection;
+package org.tensorflow.lite.blind.detection;
 
 import android.Manifest;
 import android.app.Fragment;
@@ -55,9 +55,9 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 
-import org.tensorflow.lite.examples.detection.env.ImageUtils;
-import org.tensorflow.lite.examples.detection.env.Logger;
-import org.tensorflow.lite.examples.detection.tflite.Classifier;
+import org.tensorflow.lite.blind.detection.env.ImageUtils;
+import org.tensorflow.lite.blind.detection.env.Logger;
+import org.tensorflow.lite.blind.detection.tflite.Classifier;
 
 import java.nio.ByteBuffer;
 import java.util.List;

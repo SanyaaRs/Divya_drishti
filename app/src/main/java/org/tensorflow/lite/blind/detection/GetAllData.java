@@ -1,4 +1,4 @@
-package org.tensorflow.lite.examples.detection;
+package org.tensorflow.lite.blind.detection;
 import android.app.IntentService;
 import android.content.Intent;
 import android.location.Address;

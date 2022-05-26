@@ -1,8 +1,9 @@
 package org.tensorflow.lite.blind.detection.classifiers.behaviors;
 
-import com.lampa.emotionrecognition.classifiers.InterpreterImageParams;
+
 
 import org.tensorflow.lite.Interpreter;
+import org.tensorflow.lite.blind.detection.classifiers.InterpreterImageParams;
 
 import java.util.Formatter;
 

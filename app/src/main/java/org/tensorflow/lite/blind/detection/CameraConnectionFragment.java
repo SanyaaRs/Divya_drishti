@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.tensorflow.lite.examples.detection;
+package org.tensorflow.lite.blind.detection;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -54,8 +54,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 
-import org.tensorflow.lite.examples.detection.customview.AutoFitTextureView;
-import org.tensorflow.lite.examples.detection.env.Logger;
+import org.tensorflow.lite.blind.detection.customview.AutoFitTextureView;
+import org.tensorflow.lite.blind.detection.env.Logger;
 
 import java.util.ArrayList;
 import java.util.Arrays;

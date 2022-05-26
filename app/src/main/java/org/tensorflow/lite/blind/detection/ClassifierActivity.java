@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.tensorflow.lite.examples.detection;
+package org.tensorflow.lite.blind.detection;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -26,9 +26,9 @@ import android.util.TypedValue;
 import android.widget.Toast;
 
 
-import org.tensorflow.lite.examples.detection.env.BorderedText;
-import org.tensorflow.lite.examples.detection.env.Logger;
-import org.tensorflow.lite.examples.detection.tflite.Classifier;
+import org.tensorflow.lite.blind.detection.env.BorderedText;
+import org.tensorflow.lite.blind.detection.env.Logger;
+import org.tensorflow.lite.blind.detection.tflite.Classifier;
 
 import java.io.IOException;
 import java.util.List;

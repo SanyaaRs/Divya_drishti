@@ -1,4 +1,4 @@
-package org.tensorflow.lite.examples.detection;
+package org.tensorflow.lite.blind.detection;
 
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
@@ -28,10 +28,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
-import java.util.Arrays;
 
 public class faceExpressionRecognition {
     //IMPROVED MODELS FOR ALL, DEPENDENCY TENSORFLOW, LOG CHECK, SCALING FRAME

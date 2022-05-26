@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.tensorflow.lite.examples.detection" >
+    package="org.tensorflow.lite.blind.detection" >
 
     <uses-permission android:name="android.permission.CAMERA" />
 
@@ -11,7 +11,12 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="true" />
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -24,52 +29,66 @@
         android:roundIcon="@drawable/blind"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.ObjectDetection" >
-        <activity android:name=".CameraActivity" />
-        <activity android:name=".CameraActivity2" />
-        <activity android:name=".CameraActivity3" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+
+        <activity android:name="org.tensorflow.lite.blind.detection.CameraActivity" />
+        <activity android:name="org.tensorflow.lite.blind.detection.CameraActivity2" />
+        <activity android:name="org.tensorflow.lite.blind.detection.CameraActivity3" />
         <activity
-            android:name=".DetectorActivity"
+            android:name="org.tensorflow.lite.blind.detection.DetectorActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ObjectDetection"
+            android:name="org.tensorflow.lite.blind.detection.ObjectDetection"
             android:exported="true" />
         <activity
-            android:name=".phonetransfer"
+            android:name="org.tensorflow.lite.blind.detection.EmotionDetectionActivity"
             android:exported="true" />
         <activity
-            android:name=".Banktransfer"
+            android:name="org.tensorflow.lite.blind.detection.phonetransfer"
             android:exported="true" />
         <activity
-            android:name=".ClassifierActivity"
+            android:name="org.tensorflow.lite.blind.detection.Banktransfer"
             android:exported="true" />
         <activity
-            android:name=".MainActivity8"
+            android:name="org.tensorflow.lite.blind.detection.ClassifierActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity7"
+            android:name="org.tensorflow.lite.blind.detection.MainActivity8"
             android:exported="true" />
         <activity
-            android:name=".MainActivity6"
+            android:name="org.tensorflow.lite.blind.detection.MainActivity7"
             android:exported="true" />
         <activity
-            android:name=".MainActivity5"
+            android:name="org.tensorflow.lite.blind.detection.MainActivity6"
             android:exported="true" />
         <activity
-            android:name=".MainActivity4"
+            android:name="org.tensorflow.lite.blind.detection.MainActivity5"
             android:exported="true" />
         <activity
-            android:name=".MainActivity3"
+            android:name="org.tensorflow.lite.blind.detection.MainActivity4"
             android:exported="true" />
         <activity
-            android:name=".MainActivity2"
+            android:name="org.tensorflow.lite.blind.detection.MainActivity3"
             android:exported="true" />
         <activity
-            android:name=".RealTimeFaceRecognitionActivity"
+            android:name="org.tensorflow.lite.blind.detection.MainActivity2"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name="org.tensorflow.lite.blind.detection.RealTimeFaceRecognitionActivity"
+            android:exported="true" />
+        <activity
+            android:name="org.tensorflow.lite.blind.detection.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -78,7 +97,10 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".GetAllData" />
+        <service android:name="org.tensorflow.lite.blind.detection.GetAllData" />
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="face" />
     </application>
 
 </manifest>
