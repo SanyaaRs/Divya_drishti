@@ -14,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.speech.tts.TextToSpeech;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
@@ -48,12 +49,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class EmotionDetectionActivity extends AppCompatActivity {
-
+    TextToSpeech tts;
     private static final int GALLERY_REQUEST_CODE = 0;
     private static final int TAKE_PHOTO_REQUEST_CODE = 1;
 
@@ -114,6 +117,24 @@ public class EmotionDetectionActivity extends AppCompatActivity {
         if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_REQUEST_CODE);
         }
+
+        tts=new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+
+            @Override
+            public void onInit(int status) {
+                new Thread(new Runnable() {
+                    public void run() {
+                        if (status != TextToSpeech.ERROR) // initialization me error to nae ha
+                        {
+                            // tts.setPitch(1.1f); // saw from internet
+                            tts.setSpeechRate(1f); // f denotes float, it actually type casts 0.5 to float
+                            tts.setLanguage(Locale.US);
+                        }
+                    }
+
+                }).start();
+            }
+        });
     }
 
     @Override
@@ -377,6 +398,14 @@ public class EmotionDetectionActivity extends AppCompatActivity {
         LinkedHashMap<String, Float> sortedResult =
                 (LinkedHashMap<String, Float>) SortingHelper.sortByValues(result);
 
+        float maxValueInMap=(Collections.max(sortedResult.values()));  // This will return max value in the Hashmap
+        for (Map.Entry<String, Float> entry : sortedResult.entrySet()) {  // Itrate through hashmap
+            if (entry.getValue()==maxValueInMap) {
+                System.out.println(entry.getKey());     // Print the key with max value
+                ConvertTextToSpeech(entry.getKey());
+            }
+        }
+
         ArrayList<String> reversedKeys = new ArrayList<>(sortedResult.keySet());
         // Change the order to get a decrease in probabilities
         Collections.reverse(reversedKeys);
@@ -436,6 +465,13 @@ public class EmotionDetectionActivity extends AppCompatActivity {
             mTakePhotoButton.setEnabled(true);
             mPickImageButton.setEnabled(true);
         }
+    }
+
+    private void ConvertTextToSpeech(String text) {
+        // TODO Auto-generated method stub
+
+        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+
     }
 }
 
