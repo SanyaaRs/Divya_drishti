@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
-public class MainActivity6 extends AppCompatActivity {
+public class BatteryActivity extends AppCompatActivity {
     TextView text;
     private static final int REQ_CODE_SPEECH_INPUT = 100;
     float x1, x2, y1, y2;
@@ -106,7 +106,7 @@ public class MainActivity6 extends AppCompatActivity {
                             textToSpeech.speak("you are in main menu just swipe right and say what you want", TextToSpeech.QUEUE_FLUSH, null);
                         }
                     },1000);
-                  Intent intent= new Intent(MainActivity6.this, MainActivityNo.class);
+                  Intent intent= new Intent(BatteryActivity.this, MainActivityNo.class);
                   startActivity(intent);
                      }
 

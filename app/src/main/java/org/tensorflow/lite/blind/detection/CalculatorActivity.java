@@ -25,7 +25,7 @@ import net.objecthunter.exp4j.ExpressionBuilder;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class MainActivity3 extends AppCompatActivity {
+public class CalculatorActivity extends AppCompatActivity {
     private Button button;
     public TextView txtScreen;
     public Button button2;
@@ -55,7 +55,7 @@ public class MainActivity3 extends AppCompatActivity {
                 if (status != TextToSpeech.ERROR) {
                     textToSpeech.setLanguage(Locale.US);
                     textToSpeech.setSpeechRate(1f);
-                    Toast.makeText(MainActivity3.this, "Opening the calculator......  just tap on the screen and say what you want to calculate. And Press the volume up button to return the main menu", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CalculatorActivity.this, "Opening the calculator......  just tap on the screen and say what you want to calculate. And Press the volume up button to return the main menu", Toast.LENGTH_SHORT).show();
                     textToSpeech.speak("Opening the calculator......  just tap on the screen and say what you want to calculate or say what you want ", TextToSpeech.QUEUE_FLUSH, null);
 
                 }
@@ -167,7 +167,7 @@ public class MainActivity3 extends AppCompatActivity {
                     expression = new ExpressionBuilder(inputNumber).build();
                     double result = expression.evaluate();
                     txtScreen.setText(Double.toString(result).replaceAll("\\.0*$", ""));
-                    Toast.makeText(MainActivity3.this, "Answer is", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CalculatorActivity.this, "Answer is", Toast.LENGTH_SHORT).show();
                     textToSpeech.speak("Answer is " + txtScreen.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
                     textToSpeech.speak("tap on the screen and say what you want", TextToSpeech.QUEUE_ADD,null);
                     textToSpeech.setSpeechRate(1f);
@@ -206,41 +206,41 @@ public class MainActivity3 extends AppCompatActivity {
                     String change = result.toString();
                     txtInput.setText(result.get(0));
                     if (txtInput.getText().toString().equals("read")) {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                        Intent intent = new Intent(getApplicationContext(), ReadActivity.class);
                         startActivity(intent);
                     }
                     if (txtInput.getText().toString().equals("weather")) {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity5.class);
+                        Intent intent = new Intent(getApplicationContext(), WeatherActivity.class);
                         startActivity(intent);
                         txtInput.setText(null);
                     } else {
                         textToSpeech.speak( "Do not understand just tap on the screen Say again", TextToSpeech.QUEUE_FLUSH, null);
                     }
                  if (txtInput.getText().toString().contains("bank transfer")) {
-                    Intent i = new Intent(MainActivity3.this,Banktransfer.class);
+                    Intent i = new Intent(CalculatorActivity.this,Banktransfer.class);
                     startActivity(i);
                 }
                 else if(txtInput.getText().toString().contains("phone transfer")){
-                    Intent i = new Intent(MainActivity3.this,phonetransfer.class);
+                    Intent i = new Intent(CalculatorActivity.this,phonetransfer.class);
                     startActivity(i);
                 } else {
                     textToSpeech.speak("Do not understand just Swipe right Say again", TextToSpeech.QUEUE_FLUSH, null);
                 }
                     if (txtInput.getText().toString().contains("object detection")) {
-                        Intent i = new Intent(MainActivity3.this, ObjectDetection.class);
+                        Intent i = new Intent(CalculatorActivity.this, ObjectDetection.class);
                         startActivity(i);
                     }
                     if (txtInput.getText().toString().equals("time and date")) {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity4.class);
+                        Intent intent = new Intent(getApplicationContext(), TimeDateActivity.class);
                         startActivity(intent);
                     }
                     if (txtInput.getText().toString().equals("location")) {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity8.class);
+                        Intent intent = new Intent(getApplicationContext(), LocationActivity.class);
                         startActivity(intent);
                         txtInput.setText(null);
                     }
                     if (txtInput.getText().toString().equals("battery")) {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity6.class);
+                        Intent intent = new Intent(getApplicationContext(), BatteryActivity.class);
                         startActivity(intent);
                         txtInput.setText(null);
                     }
@@ -297,12 +297,12 @@ public class MainActivity3 extends AppCompatActivity {
                 float x2 = touchEvent.getX();
                 float x1 = touchEvent.getX();
                  if (x1 < x2) {
-                    Intent i = new Intent(MainActivity3.this, MainActivityNo.class);
+                    Intent i = new Intent(CalculatorActivity.this, MainActivityNo.class);
                     startActivity(i);
 
                 } else {
                     if (x1 > x2) {
-                        Intent i = new Intent(MainActivity3.this, MainActivityNo.class);
+                        Intent i = new Intent(CalculatorActivity.this, MainActivityNo.class);
                         startActivity(i);
                     }
                 }

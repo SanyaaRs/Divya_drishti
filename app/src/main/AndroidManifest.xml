@@ -64,23 +64,23 @@
             android:name="org.tensorflow.lite.blind.detection.ClassifierActivity"
             android:exported="true" />
         <activity
-            android:name="org.tensorflow.lite.blind.detection.MainActivity8"
+            android:name="org.tensorflow.lite.blind.detection.LocationActivity"
             android:exported="true" />
 
         <activity
-            android:name="org.tensorflow.lite.blind.detection.MainActivity6"
+            android:name="org.tensorflow.lite.blind.detection.BatteryActivity"
             android:exported="true" />
         <activity
-            android:name="org.tensorflow.lite.blind.detection.MainActivity5"
+            android:name="org.tensorflow.lite.blind.detection.WeatherActivity"
             android:exported="true" />
         <activity
-            android:name="org.tensorflow.lite.blind.detection.MainActivity4"
+            android:name="org.tensorflow.lite.blind.detection.TimeDateActivity"
             android:exported="true" />
         <activity
-            android:name="org.tensorflow.lite.blind.detection.MainActivity3"
+            android:name="org.tensorflow.lite.blind.detection.CalculatorActivity"
             android:exported="true" />
         <activity
-            android:name="org.tensorflow.lite.blind.detection.MainActivity2"
+            android:name="org.tensorflow.lite.blind.detection.ReadActivity"
             android:exported="true" />
         <activity
             android:name="org.tensorflow.lite.blind.detection.RealTimeFaceRecognitionActivity"

@@ -26,7 +26,7 @@ import com.google.android.gms.location.LocationServices;
 
  import java.util.Locale;
 
-public class MainActivity8 extends AppCompatActivity {
+public class LocationActivity extends AppCompatActivity {
     float x1, x2;
     private FusedLocationProviderClient fusedLocationClient;//One of the location APIs in google play services
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 2;//Request Code is used to check which permission called this function. // This request code is provided when the user is prompt for permission.
@@ -43,7 +43,7 @@ public class MainActivity8 extends AppCompatActivity {
          addressResultReceiver = new LocationAddressResultReceiver(new Handler());
         //A Handler allows you to send and process Message and Runnable objects
         currentAddTv = findViewById(R.id.textView);
-        textToSpeech = new TextToSpeech(MainActivity8.this, new TextToSpeech.OnInitListener() {
+        textToSpeech = new TextToSpeech(LocationActivity.this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
                 if (status != TextToSpeech.ERROR) {
@@ -86,7 +86,7 @@ public class MainActivity8 extends AppCompatActivity {
     @SuppressWarnings("MissingPermission")
     private void getAddress() {
         if (!Geocoder.isPresent()) {
-            Toast.makeText(MainActivity8.this, "Can't find current address, ",
+            Toast.makeText(LocationActivity.this, "Can't find current address, ",
                     Toast.LENGTH_SHORT).show();
             return;
         }
@@ -121,7 +121,7 @@ public class MainActivity8 extends AppCompatActivity {
                 getAddress();
             }
             if (resultCode == 1) {
-                Toast.makeText(MainActivity8.this, "Address not found, ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LocationActivity.this, "Address not found, ", Toast.LENGTH_SHORT).show();
             }
             String currentAdd = resultData.getString("address_result");
             showResults(currentAdd);
@@ -155,7 +155,7 @@ public class MainActivity8 extends AppCompatActivity {
 
                 }
                 if (x1 > x2) {
-                    Intent i = new Intent(MainActivity8.this, MainActivityNo.class);
+                    Intent i = new Intent(LocationActivity.this, MainActivityNo.class);
                     startActivity(i);
                     Handler handler = new Handler(Looper.getMainLooper());
                     handler.post(new Runnable() {

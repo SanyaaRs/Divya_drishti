@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Objects;
 
-public class MainActivity5 extends AppCompatActivity {
+public class WeatherActivity extends AppCompatActivity {
 
     EditText cityInput;
     final int VOICE_CODE = 100;
@@ -69,7 +69,7 @@ public class MainActivity5 extends AppCompatActivity {
             public void onInit(int status) {
                 if (status != TextToSpeech.ERROR) {
                     textToSpeech.setLanguage(Locale.US);
-                    Toast.makeText(MainActivity5.this, "tap on the screen and say the name of city", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(WeatherActivity.this, "tap on the screen and say the name of city", Toast.LENGTH_SHORT).show();
                     textToSpeech.speak("say the name of city.", TextToSpeech.QUEUE_FLUSH, null);
                     textToSpeech.setSpeechRate(1f);
                 }
@@ -118,7 +118,7 @@ public class MainActivity5 extends AppCompatActivity {
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     cityInput.setText(result.get(0));
                     if (cityInput.getText().toString().equals("read")) {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                        Intent intent = new Intent(getApplicationContext(), ReadActivity.class);
                         startActivity(intent);
                     }
                     if (cityInput.getText().toString().equals("main menu")) {
@@ -126,21 +126,21 @@ public class MainActivity5 extends AppCompatActivity {
                         startActivity(intent);
                     }
                     if (cityInput.getText().toString().equals("location")) {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity8.class);
+                        Intent intent = new Intent(getApplicationContext(), LocationActivity.class);
                         startActivity(intent);
                         cityInput.setText(null);
                     }
                     if (cityInput.getText().toString().equals("battery")) {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity6.class);
+                        Intent intent = new Intent(getApplicationContext(), BatteryActivity.class);
                         startActivity(intent);
                         cityInput.setText(null);
                     }
                     if (cityInput.getText().toString().contains("bank transfer")) {
-                        Intent i = new Intent(MainActivity5.this,Banktransfer.class);
+                        Intent i = new Intent(WeatherActivity.this,Banktransfer.class);
                         startActivity(i);
                     }
                     else if(cityInput.getText().toString().contains("phone transfer")){
-                        Intent i = new Intent(MainActivity5.this,phonetransfer.class);
+                        Intent i = new Intent(WeatherActivity.this,phonetransfer.class);
                         startActivity(i);
                     } else {
                         textToSpeech.speak("Do not understand just Swipe right Say again", TextToSpeech.QUEUE_FLUSH, null);
@@ -151,17 +151,17 @@ public class MainActivity5 extends AppCompatActivity {
                         startActivity(intent);
                     }
                     if (cityInput.getText().toString().contains("object detection")) {
-                        Intent i = new Intent(MainActivity5.this,ObjectDetection.class);
+                        Intent i = new Intent(WeatherActivity.this,ObjectDetection.class);
                         startActivity(i);}
 
                     if (cityInput.getText().toString().equals("time and date")) {
                         onDestroy();
-                        Intent intent = new Intent(getApplicationContext(), MainActivity4.class);
+                        Intent intent = new Intent(getApplicationContext(), TimeDateActivity.class);
                         startActivity(intent);
                         cityInput.setText(null);
                     }
                     if (cityInput.getText().toString().equals("calculator")) {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+                        Intent intent = new Intent(getApplicationContext(), CalculatorActivity.class);
                         startActivity(intent);
                     }
                     else if (cityInput.getText().toString().equals("exit")) {
@@ -176,7 +176,7 @@ public class MainActivity5 extends AppCompatActivity {
         //To ensure editText is not empty
         cityEntered = cityInput.getText().toString();
         if (cityEntered.trim().equals(""))
-            Toast.makeText(MainActivity5.this, "Enter city name", Toast.LENGTH_SHORT).show();
+            Toast.makeText(WeatherActivity.this, "Enter city name", Toast.LENGTH_SHORT).show();
         else {
             api_url(cityEntered); //passing user input
         }

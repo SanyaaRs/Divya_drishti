@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-public class MainActivity4 extends AppCompatActivity {
+public class TimeDateActivity extends AppCompatActivity {
     private TextToSpeech textToSpeech;
     private TextView format7;
     float x1,x2,y1,y2;
@@ -94,7 +94,7 @@ public boolean onTouchEvent(MotionEvent touchEvent) {
                     }
                 }, 1000);
 
-                Intent intent = new Intent(MainActivity4.this, MainActivityNo.class);
+                Intent intent = new Intent(TimeDateActivity.this, MainActivityNo.class);
                 startActivity(intent);
             }
 

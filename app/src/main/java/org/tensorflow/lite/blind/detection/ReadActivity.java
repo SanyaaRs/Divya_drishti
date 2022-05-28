@@ -39,7 +39,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 
-public class MainActivity2 extends AppCompatActivity {
+public class ReadActivity extends AppCompatActivity {
      private static final int REQ_CODE_SPEECH_INPUT = 100;
      private TextView mVoiceInputTv;
     private static int firstTime = 0;
@@ -67,7 +67,7 @@ public class MainActivity2 extends AppCompatActivity {
                 if (status != TextToSpeech.ERROR) {
                     textToSpeech.setLanguage(Locale.CANADA);
                     textToSpeech.setSpeechRate(1f);
-                    Toast.makeText(MainActivity2.this, "swipe right and say yes to read and say no to return back to main menu", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ReadActivity.this, "swipe right and say yes to read and say no to return back to main menu", Toast.LENGTH_SHORT).show();
                     textToSpeech.speak("swipe right and say yes to read and say no to return back to main menu", TextToSpeech.QUEUE_ADD, null);
                 }
             }
@@ -100,7 +100,7 @@ public class MainActivity2 extends AppCompatActivity {
 
 
     private void textRecognizer() {
-        Toast.makeText(MainActivity2.this, "Tap on the screen and listen ", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ReadActivity.this, "Tap on the screen and listen ", Toast.LENGTH_SHORT).show();
         textToSpeech.speak(" Tap on the screen take a picture of any text with your device and listen", TextToSpeech.QUEUE_FLUSH, null);
         textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
         cameraSource = new CameraSource.Builder(getApplicationContext(), textRecognizer)
@@ -207,46 +207,46 @@ public class MainActivity2 extends AppCompatActivity {
                     mVoiceInputTv.setText(result.get(0));
                 }
                 if (mVoiceInputTv.getText().toString().contentEquals("read")) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                    Intent intent = new Intent(getApplicationContext(), ReadActivity.class);
                     startActivity(intent);
                 }
                 if (mVoiceInputTv.getText().toString().contentEquals("time and date")) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity4.class);
+                    Intent intent = new Intent(getApplicationContext(), TimeDateActivity.class);
                     startActivity(intent);
                 }
                 if (mVoiceInputTv.getText().toString().contentEquals("battery")) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity6.class);
+                    Intent intent = new Intent(getApplicationContext(), BatteryActivity.class);
                     startActivity(intent);
                     mVoiceInputTv.setText(null);
                 }
                 if (mVoiceInputTv.getText().toString().contentEquals("location")) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity8.class);
+                    Intent intent = new Intent(getApplicationContext(), LocationActivity.class);
                     startActivity(intent);
                     mVoiceInputTv.setText(null);
                 }
                if (mVoiceInputTv.getText().toString().contains("bank transfer")) {
-                    Intent i = new Intent(MainActivity2.this,Banktransfer.class);
+                    Intent i = new Intent(ReadActivity.this,Banktransfer.class);
                     startActivity(i);
                 }
                 else if(mVoiceInputTv.getText().toString().contains("phone transfer")){
-                    Intent i = new Intent(MainActivity2.this,phonetransfer.class);
+                    Intent i = new Intent(ReadActivity.this,phonetransfer.class);
                     startActivity(i);
                 } else {
                     textToSpeech.speak("Do not understand just Swipe right Say again", TextToSpeech.QUEUE_FLUSH, null);
                 }
                 if (mVoiceInputTv.getText().toString().contains("object detection")) {
-                    Intent i = new Intent(MainActivity2.this, ObjectDetection.class);
+                    Intent i = new Intent(ReadActivity.this, ObjectDetection.class);
                     startActivity(i);
                 }
                 if (mVoiceInputTv.getText().toString().contentEquals("weather")) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity5.class);
+                    Intent intent = new Intent(getApplicationContext(), WeatherActivity.class);
                     startActivity(intent);
                     mVoiceInputTv.setText(null);
                 } else {
                     textToSpeech.speak( "Do not understand just swipe right and Say again", TextToSpeech.QUEUE_FLUSH, null);
                 }
                 if (mVoiceInputTv.getText().toString().contentEquals("calculator")) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+                    Intent intent = new Intent(getApplicationContext(), CalculatorActivity.class);
                     startActivity(intent);
                     mVoiceInputTv.setText(null);
                 }

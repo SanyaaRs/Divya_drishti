@@ -103,12 +103,12 @@ public class MainActivity extends AppCompatActivity {
 
                 if (mVoiceInputTv.getText().toString().equals("read")) {
 
-                    Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                    Intent intent = new Intent(getApplicationContext(), ReadActivity.class);
                     startActivity(intent);
                     mVoiceInputTv.setText(null);
                 }
                 if (mVoiceInputTv.getText().toString().equals("calculator")) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+                    Intent intent = new Intent(getApplicationContext(), CalculatorActivity.class);
                     startActivity(intent);
                     mVoiceInputTv.setText(null);
                 }
@@ -131,24 +131,24 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (mVoiceInputTv.getText().toString().equals("time and date")) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity4.class);
+                    Intent intent = new Intent(getApplicationContext(), TimeDateActivity.class);
                     startActivity(intent);
                     mVoiceInputTv.setText(null);
                 }
                 if (mVoiceInputTv.getText().toString().equals("weather")) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity5.class);
+                    Intent intent = new Intent(getApplicationContext(), WeatherActivity.class);
                     startActivity(intent);
                     mVoiceInputTv.setText(null);
                 }
 
                 if (mVoiceInputTv.getText().toString().equals("battery")) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity6.class);
+                    Intent intent = new Intent(getApplicationContext(), BatteryActivity.class);
                     startActivity(intent);
                     mVoiceInputTv.setText(null);
                 }
 
                 if (mVoiceInputTv.getText().toString().equals("location")) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity8.class);
+                    Intent intent = new Intent(getApplicationContext(), LocationActivity.class);
                     startActivity(intent);
                     mVoiceInputTv.setText(null);
                 }
