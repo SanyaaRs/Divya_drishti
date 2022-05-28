@@ -331,7 +331,7 @@ public boolean onKeyDown(int keyCode, @Nullable KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
 
           finish();
-          Intent intent = new Intent(DetectorActivity.this, MainActivityNo.class);
+          Intent intent = new Intent(DetectorActivity.this, MainActivity.class);
           startActivity(intent);
 
         }

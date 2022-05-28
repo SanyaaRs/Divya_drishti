@@ -287,7 +287,7 @@ public class ReadActivity extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, @Nullable KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
             finish();
-            Intent intent = new Intent(getApplicationContext(), MainActivityNo.class);
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
         }
         return true;

@@ -314,7 +314,7 @@ public class CalculatorActivity extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, @Nullable KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_VOLUME_UP){
             textToSpeech.speak("You are in main menu. just swipe right and say what you want", TextToSpeech.QUEUE_FLUSH, null);
-            Intent intent = new Intent(getApplicationContext(), MainActivityNo.class);
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             final Handler handler = new Handler(Looper.getMainLooper());
             handler.postDelayed(new Runnable() {

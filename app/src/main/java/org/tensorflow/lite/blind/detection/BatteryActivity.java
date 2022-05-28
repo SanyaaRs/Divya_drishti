@@ -24,7 +24,7 @@ public class BatteryActivity extends AppCompatActivity {
     TextToSpeech textToSpeech;
     public boolean onKeyDown(int keyCode, @Nullable KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-            Intent intent = new Intent(getApplicationContext(), MainActivityNo.class);
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             final Handler handler = new Handler(Looper.getMainLooper());
             handler.postDelayed(new Runnable() {
