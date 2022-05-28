@@ -24,7 +24,7 @@ public class MainActivity6 extends AppCompatActivity {
     TextToSpeech textToSpeech;
     public boolean onKeyDown(int keyCode, @Nullable KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), MainActivityNo.class);
             startActivity(intent);
             final Handler handler = new Handler(Looper.getMainLooper());
             handler.postDelayed(new Runnable() {
@@ -106,7 +106,7 @@ public class MainActivity6 extends AppCompatActivity {
                             textToSpeech.speak("you are in main menu just swipe right and say what you want", TextToSpeech.QUEUE_FLUSH, null);
                         }
                     },1000);
-                  Intent intent= new Intent(MainActivity6.this,MainActivity.class);
+                  Intent intent= new Intent(MainActivity6.this, MainActivityNo.class);
                   startActivity(intent);
                      }
 

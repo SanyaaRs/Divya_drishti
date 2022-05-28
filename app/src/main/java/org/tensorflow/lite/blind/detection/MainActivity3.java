@@ -297,12 +297,12 @@ public class MainActivity3 extends AppCompatActivity {
                 float x2 = touchEvent.getX();
                 float x1 = touchEvent.getX();
                  if (x1 < x2) {
-                    Intent i = new Intent(MainActivity3.this, MainActivity.class);
+                    Intent i = new Intent(MainActivity3.this, MainActivityNo.class);
                     startActivity(i);
 
                 } else {
                     if (x1 > x2) {
-                        Intent i = new Intent(MainActivity3.this, MainActivity.class);
+                        Intent i = new Intent(MainActivity3.this, MainActivityNo.class);
                         startActivity(i);
                     }
                 }
@@ -314,7 +314,7 @@ public class MainActivity3 extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, @Nullable KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_VOLUME_UP){
             textToSpeech.speak("You are in main menu. just swipe right and say what you want", TextToSpeech.QUEUE_FLUSH, null);
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), MainActivityNo.class);
             startActivity(intent);
             final Handler handler = new Handler(Looper.getMainLooper());
             handler.postDelayed(new Runnable() {

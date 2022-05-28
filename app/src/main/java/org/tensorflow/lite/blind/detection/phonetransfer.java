@@ -153,7 +153,7 @@ public class phonetransfer extends AppCompatActivity {
                                         h.postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
-                                                Intent i = new Intent(phonetransfer.this,MainActivity.class);
+                                                Intent i = new Intent(phonetransfer.this, MainActivityNo.class);
                                                 startActivity(i);
 
                                             }
@@ -175,7 +175,7 @@ public class phonetransfer extends AppCompatActivity {
                                         @Override
                                         public void run() {
                                              finish();
-                                            Intent i = new Intent(phonetransfer.this, MainActivity.class);
+                                            Intent i = new Intent(phonetransfer.this, MainActivityNo.class);
                                             startActivity(i);
                                         }
                                     }, 9000);
@@ -194,7 +194,7 @@ public class phonetransfer extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         finish();
-                                        Intent intent = new Intent(phonetransfer.this,MainActivity.class);
+                                        Intent intent = new Intent(phonetransfer.this, MainActivityNo.class);
                                         startActivity(intent);
 
                                     }

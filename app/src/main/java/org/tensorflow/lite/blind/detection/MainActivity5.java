@@ -122,7 +122,7 @@ public class MainActivity5 extends AppCompatActivity {
                         startActivity(intent);
                     }
                     if (cityInput.getText().toString().equals("main menu")) {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MainActivityNo.class);
                         startActivity(intent);
                     }
                     if (cityInput.getText().toString().equals("location")) {
@@ -301,7 +301,7 @@ public class MainActivity5 extends AppCompatActivity {
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), MainActivityNo.class);
             startActivity(intent);
             final Handler handler = new Handler(Looper.getMainLooper());
             handler.postDelayed(new Runnable() {

@@ -275,7 +275,7 @@ public class MainActivity2 extends AppCompatActivity {
                         }
                     },1000);
 
-                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                 Intent intent = new Intent(getApplicationContext(), MainActivityNo.class);
                     startActivity(intent);
                 }
                 break;
@@ -287,7 +287,7 @@ public class MainActivity2 extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, @Nullable KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
             finish();
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), MainActivityNo.class);
             startActivity(intent);
         }
         return true;

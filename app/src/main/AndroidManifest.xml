@@ -86,7 +86,7 @@
             android:name="org.tensorflow.lite.blind.detection.RealTimeFaceRecognitionActivity"
             android:exported="true" />
         <activity
-            android:name="org.tensorflow.lite.blind.detection.MainActivity7"
+            android:name="org.tensorflow.lite.blind.detection.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

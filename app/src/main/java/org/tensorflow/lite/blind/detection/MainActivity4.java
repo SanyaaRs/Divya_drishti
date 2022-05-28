@@ -94,7 +94,7 @@ public boolean onTouchEvent(MotionEvent touchEvent) {
                     }
                 }, 1000);
 
-                Intent intent = new Intent(MainActivity4.this, MainActivity.class);
+                Intent intent = new Intent(MainActivity4.this, MainActivityNo.class);
                 startActivity(intent);
             }
 

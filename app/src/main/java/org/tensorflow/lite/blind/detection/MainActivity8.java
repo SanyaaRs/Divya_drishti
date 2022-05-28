@@ -155,7 +155,7 @@ public class MainActivity8 extends AppCompatActivity {
 
                 }
                 if (x1 > x2) {
-                    Intent i = new Intent(MainActivity8.this,MainActivity.class);
+                    Intent i = new Intent(MainActivity8.this, MainActivityNo.class);
                     startActivity(i);
                     Handler handler = new Handler(Looper.getMainLooper());
                     handler.post(new Runnable() {
