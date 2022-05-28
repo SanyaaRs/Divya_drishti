@@ -140,11 +140,11 @@ public class DetectorActivity extends CameraActivity  {
     rgbFrameBitmap = Bitmap.createBitmap(previewWidth, previewHeight, Config.ARGB_8888);
     croppedBitmap = Bitmap.createBitmap(cropSize, cropSize, Config.ARGB_8888);
 
-   /* frameToCropTransform =
-        ImageUtils.getTransformationMatrix(
+   frameToCropTransform =
+           org.tensorflow.lite.blind.detection.ImageUtils.getTransformationMatrix(
             previewWidth, previewHeight,
             cropSize, cropSize,
-            sensorOrientation, MAINTAIN_ASPECT);*/
+            sensorOrientation, MAINTAIN_ASPECT);
 
     cropToFrameTransform = new Matrix();
     frameToCropTransform.invert(cropToFrameTransform);
