@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (status != TextToSpeech.ERROR) {
                     textToSpeech.setLanguage(Locale.US);
                     textToSpeech.setSpeechRate(1f);
-                    textToSpeech.speak("say read for read., calculator for calculator., Weather for weather., Location for location., Battery,Say face detect for detecting face.,Say expression detection for detecting facial expression.,Say currency detection for detecting currency., Time and date. say bank transfer. or, say phone transfer, to transfer the amount. say object detection to detect the object. say exit for closing the application.  Swipe right and say what you want ", TextToSpeech.QUEUE_FLUSH, null);
+                    textToSpeech.speak("say read for read., calculator for calculator., Weather for weather., Location for location., Battery,Say recognition for detecting face.,Say expression detection for detecting facial expression.,Say currency detection for detecting currency., Time and date. say bank transfer. or, say phone transfer, to transfer the amount. say object detection to detect the object. say exit for closing the application.  Swipe right and say what you want ", TextToSpeech.QUEUE_FLUSH, null);
                 }
             }
         });
@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mVoiceInputTv.setText(null);
                 }
 
-                if (mVoiceInputTv.getText().toString().equals("face detect")) {
+                if (mVoiceInputTv.getText().toString().equals("face recognition")) {
                     Intent intent = new Intent(getApplicationContext(), RealTimeFaceRecognitionActivity.class);
                     startActivity(intent);
                     mVoiceInputTv.setText(null);

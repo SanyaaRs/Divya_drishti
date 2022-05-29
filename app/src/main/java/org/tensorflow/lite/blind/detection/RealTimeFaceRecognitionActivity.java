@@ -302,7 +302,7 @@ public class RealTimeFaceRecognitionActivity extends AppCompatActivity {
                 if (status != TextToSpeech.ERROR) {
                     textToSpeech.setLanguage(Locale.US);
                     textToSpeech.setSpeechRate(1f);
-                    textToSpeech.speak("say read for read., calculator for calculator., Weather for weather., Location for location., Battery,Say face detect for detecting face.,Say expression detection for detecting facial expression.,Say currency detection for detecting currency., Time and date. say bank transfer. or, say phone transfer, to transfer the amount. say object detection to detect the object. say exit for closing the application.  Swipe right and say what you want ", TextToSpeech.QUEUE_FLUSH, null);
+                    textToSpeech.speak("say add face for adding face., say recognize for recognizing face.  Swipe right and say what you want ", TextToSpeech.QUEUE_FLUSH, null);
                 }
             }
         });
@@ -1184,7 +1184,7 @@ try {
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     mVoiceInputTv.setText(result.get(0));
 
-                    if (mVoiceInputTv.getText().toString().equals("address")) {
+                    if (mVoiceInputTv.getText().toString().equals("add face")) {
 
                         if(recognize.getText().toString().equals("Recognize"))
                         {
@@ -1209,12 +1209,31 @@ try {
 
                         }
                     }
-                    if (mVoiceInputTv.getText().toString().equals("select image")) {
+                    if (mVoiceInputTv.getText().toString().equals("recognise")) {
+
+                        if(recognize.getText().toString().equals("Recognize"))
+                        {
+                            start=true;
+                            textAbove_preview.setText("Recognized Face:");
+                            recognize.setText("Add Face");
+                            add_face.setVisibility(View.INVISIBLE);
+                            reco_name.setVisibility(View.VISIBLE);
+                            face_preview.setVisibility(View.INVISIBLE);
+                            preview_info.setText("");
+                            //preview_info.setVisibility(View.INVISIBLE);
+                        }
+                        else
+                        {
+                            textAbove_preview.setText("Face Preview: ");
+                            recognize.setText("Recognize");
+                            add_face.setVisibility(View.VISIBLE);
+                            reco_name.setVisibility(View.INVISIBLE);
+                            face_preview.setVisibility(View.VISIBLE);
+                            preview_info.setText("1.Bring Face in view of Camera.\n\n2.Your Face preview will appear here.\n\n3.Click Add button to save face.");
 
 
-                        mVoiceInputTv.setText(null);
+                        }
                     }
-
 
             }
         }
