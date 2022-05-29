@@ -236,7 +236,11 @@ public class DetectorActivity extends CameraActivity  {
                 while ((mLine = reader.readLine()) != null) {
                   if (result.toString().contains(mLine)) {
                          texttospeech.speak( mLine, TextToSpeech.QUEUE_FLUSH, null);
-
+                    try {
+                      Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                      e.printStackTrace();
+                    }
                   }
                 }
 
