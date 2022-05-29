@@ -39,7 +39,7 @@ public class LocationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main8);
+        setContentView(R.layout.activity_location);
          addressResultReceiver = new LocationAddressResultReceiver(new Handler());
         //A Handler allows you to send and process Message and Runnable objects
         currentAddTv = findViewById(R.id.textView);
@@ -155,7 +155,7 @@ public class LocationActivity extends AppCompatActivity {
 
                 }
                 if (x1 > x2) {
-                    Intent i = new Intent(LocationActivity.this, MainActivityNo.class);
+                    Intent i = new Intent(LocationActivity.this, MainActivity.class);
                     startActivity(i);
                     Handler handler = new Handler(Looper.getMainLooper());
                     handler.post(new Runnable() {

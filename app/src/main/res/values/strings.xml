@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translation_description="Blind Helper">Advanced Blind Helper</string>
+    <string name="app_name" translation_description="Blind Helper">Divya Drishti</string>
     <string name="tfe_od_camera_error" translation_description="Error regarding camera support[CHAR_LIMIT=40]">This device doesn\'t support Camera2 API.</string>
     <string name="speech_prompt">say hello</string>
     <string name="speech_not_supported">not supported</string>
@@ -23,8 +23,8 @@
         <item>NNAPI</item>
     </string-array>
 
-    <string name="pick_image_button">Pick an image</string>
-    <string name="take_photo_button">Take a photo</string>
+    <string name="pick_image_button">select image</string>
+    <string name="take_photo_button">Capture photo</string>
     <string name="classification_delimiter_text_view">-</string>
     <string name="face">Face</string>
     <string name="faceless">No face detected</string>

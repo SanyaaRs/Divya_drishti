@@ -2,6 +2,7 @@ package org.tensorflow.lite.blind.detection;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -14,13 +15,16 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.util.Pair;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -61,22 +65,22 @@ public class EmotionDetectionActivity extends AppCompatActivity {
     private static final int TAKE_PHOTO_REQUEST_CODE = 1;
 
     private final String MODEL_FILE_NAME = "simple_classifier.tflite";
-
+    private static TextToSpeech textToSpeech;
     private final int SCALED_IMAGE_BIGGEST_SIZE = 480;
     private static final int MY_CAMERA_REQUEST_CODE = 100;
     private TFLiteImageClassifier mClassifier;
-
+    private static final int REQ_CODE_SPEECH_INPUT = 100;
     private ProgressBar mClassificationProgressBar;
 
     private ImageView mImageView;
-
+    float x1, x2, y1, y2;
     private Button mPickImageButton;
     private Button mTakePhotoButton;
 
     private ExpandableListView mClassificationExpandableListView;
 
     private Uri mCurrentPhotoUri;
-
+    private TextView mVoiceInputTv;
     private Map<String, List<Pair<String, String>>> mClassificationResult;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -135,7 +139,50 @@ public class EmotionDetectionActivity extends AppCompatActivity {
                 }).start();
             }
         });
+        mVoiceInputTv = (TextView) findViewById(R.id.voiceIn);
+        textToSpeech = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+
+            @Override
+            public void onInit(int status) {
+                if (status != TextToSpeech.ERROR) {
+                    textToSpeech.setLanguage(Locale.US);
+                    textToSpeech.setSpeechRate(1f);
+                    textToSpeech.speak("say Select image for selecting image from gallery., Say Take photo for opening camera.  Swipe right and say what you want ", TextToSpeech.QUEUE_FLUSH, null);
+                }
+            }
+        });
     }
+
+    public boolean onTouchEvent(MotionEvent touchEvent) {
+        switch (touchEvent.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                x1 = touchEvent.getX();
+                y1 = touchEvent.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                x2 = touchEvent.getX();
+                y2 = touchEvent.getY();
+                if (x1 > x2) {
+                    textToSpeech.stop();
+                    startVoiceInput();
+                }
+                break;
+        }
+        return false;
+    }
+
+    private void startVoiceInput() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Hello, How can I help you?");
+        try {
+            startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+        } catch (ActivityNotFoundException a) {
+            a.printStackTrace();
+        }
+    }
+
 
     @Override
     protected void onDestroy() {
@@ -166,6 +213,23 @@ public class EmotionDetectionActivity extends AppCompatActivity {
                     clearClassificationExpandableListView();
                     processImageRequestResult(mCurrentPhotoUri);
                     break;
+                case REQ_CODE_SPEECH_INPUT:
+                    ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    mVoiceInputTv.setText(result.get(0));
+
+                    if (mVoiceInputTv.getText().toString().equals("capture photo")) {
+
+                        takePhoto();
+                        mVoiceInputTv.setText(null);
+                        }
+                    if (mVoiceInputTv.getText().toString().equals("select image")) {
+
+                        pickFromGallery();
+                        mVoiceInputTv.setText(null);
+                    }
+
+
+
 
                 default:
                     break;

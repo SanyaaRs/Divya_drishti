@@ -56,7 +56,7 @@ public class ReadActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_read);
         mVoiceInputTv = (TextView) findViewById(R.id.textView);
         getWindow().getDecorView().setBackgroundColor(Color.WHITE);
         ActivityCompat.requestPermissions(this, new String[]{CAMERA}, PackageManager.PERMISSION_GRANTED);
@@ -177,7 +177,7 @@ public class ReadActivity extends AppCompatActivity {
     }
 
     private void resultObtained() {
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_read);
         textView = findViewById(R.id.textView);
         textView.setText(stringResult);
         textToSpeech.speak(stringResult, TextToSpeech.QUEUE_FLUSH, null, null);
@@ -275,7 +275,7 @@ public class ReadActivity extends AppCompatActivity {
                         }
                     },1000);
 
-                 Intent intent = new Intent(getApplicationContext(), MainActivityNo.class);
+                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 }
                 break;

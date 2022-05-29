@@ -47,7 +47,7 @@ public class WeatherActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main5);
+        setContentView(R.layout.activity_weather);
 
         cityTextView = findViewById(R.id.city_text_view);
         cityTextView.setText("");
@@ -122,7 +122,7 @@ public class WeatherActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                     if (cityInput.getText().toString().equals("main menu")) {
-                        Intent intent = new Intent(getApplicationContext(), MainActivityNo.class);
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                     }
                     if (cityInput.getText().toString().equals("location")) {

@@ -159,7 +159,7 @@ public class Banktransfer extends AppCompatActivity {
                                         h.postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
-                                                Intent i = new Intent(Banktransfer.this, MainActivityNo.class);
+                                                Intent i = new Intent(Banktransfer.this, MainActivity.class);
                                                 startActivity(i);
 
                                             }
@@ -181,7 +181,7 @@ public class Banktransfer extends AppCompatActivity {
                                         @Override
                                         public void run() {
                                             finish();
-                                            Intent intent = new Intent(Banktransfer.this, MainActivityNo.class);
+                                            Intent intent = new Intent(Banktransfer.this, MainActivity.class);
                                             startActivity(intent);
                                             tts.speak("you are in main menu. just swipe right and say what you want", TextToSpeech.QUEUE_FLUSH, null);
 
@@ -200,7 +200,7 @@ public class Banktransfer extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         finish();
-                                        Intent intent = new Intent(Banktransfer.this, MainActivityNo.class);
+                                        Intent intent = new Intent(Banktransfer.this, MainActivity.class);
                                         startActivity(intent);
 
                                     }

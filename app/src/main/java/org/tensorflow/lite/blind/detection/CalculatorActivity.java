@@ -41,7 +41,7 @@ public class CalculatorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_calculator);
         setNumericOnClickListener();
         setOperatorOnClickListener();
         txtScreen = findViewById(R.id.txtScreen);
@@ -297,12 +297,12 @@ public class CalculatorActivity extends AppCompatActivity {
                 float x2 = touchEvent.getX();
                 float x1 = touchEvent.getX();
                  if (x1 < x2) {
-                    Intent i = new Intent(CalculatorActivity.this, MainActivityNo.class);
+                    Intent i = new Intent(CalculatorActivity.this, MainActivity.class);
                     startActivity(i);
 
                 } else {
                     if (x1 > x2) {
-                        Intent i = new Intent(CalculatorActivity.this, MainActivityNo.class);
+                        Intent i = new Intent(CalculatorActivity.this, MainActivity.class);
                         startActivity(i);
                     }
                 }

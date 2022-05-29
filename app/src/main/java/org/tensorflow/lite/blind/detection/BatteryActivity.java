@@ -42,7 +42,7 @@ public class BatteryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main6);
+        setContentView(R.layout.activity_battery);
         text = findViewById(R.id.text);
         textToSpeech = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
@@ -106,7 +106,7 @@ public class BatteryActivity extends AppCompatActivity {
                             textToSpeech.speak("you are in main menu just swipe right and say what you want", TextToSpeech.QUEUE_FLUSH, null);
                         }
                     },1000);
-                  Intent intent= new Intent(BatteryActivity.this, MainActivityNo.class);
+                  Intent intent= new Intent(BatteryActivity.this, MainActivity.class);
                   startActivity(intent);
                      }
 

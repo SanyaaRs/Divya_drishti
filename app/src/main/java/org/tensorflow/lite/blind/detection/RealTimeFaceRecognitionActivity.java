@@ -3,6 +3,7 @@ package org.tensorflow.lite.blind.detection;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,11 +25,13 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
+import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.text.InputType;
 import android.util.Log;
 import android.util.Pair;
 import android.util.Size;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -85,7 +88,10 @@ import java.util.concurrent.Executors;
 
 public class RealTimeFaceRecognitionActivity extends AppCompatActivity {
     FaceDetector detector;
-
+    private static final int REQ_CODE_SPEECH_INPUT = 100;
+    private TextView mVoiceInputTv;
+    private static TextToSpeech textToSpeech;
+    float x1, x2, y1, y2;
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
     PreviewView previewView;
     ImageView face_preview;
@@ -107,7 +113,7 @@ public class RealTimeFaceRecognitionActivity extends AppCompatActivity {
     float IMAGE_MEAN = 128.0f;
     float IMAGE_STD = 128.0f;
     int OUTPUT_SIZE=192; //Output size of model
-    private static int SELECT_PICTURE = 1;
+    private static final int SELECT_PICTURE = 1;
     ProcessCameraProvider cameraProvider;
     private static final int MY_CAMERA_REQUEST_CODE = 100;
     TextToSpeech tts;
@@ -289,8 +295,51 @@ public class RealTimeFaceRecognitionActivity extends AppCompatActivity {
         cameraBind();
 
 
+        textToSpeech = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
 
+            @Override
+            public void onInit(int status) {
+                if (status != TextToSpeech.ERROR) {
+                    textToSpeech.setLanguage(Locale.US);
+                    textToSpeech.setSpeechRate(1f);
+                    textToSpeech.speak("say read for read., calculator for calculator., Weather for weather., Location for location., Battery,Say face detect for detecting face.,Say expression detection for detecting facial expression.,Say currency detection for detecting currency., Time and date. say bank transfer. or, say phone transfer, to transfer the amount. say object detection to detect the object. say exit for closing the application.  Swipe right and say what you want ", TextToSpeech.QUEUE_FLUSH, null);
+                }
+            }
+        });
+        mVoiceInputTv = (TextView) findViewById(R.id.voiceIno);
     }
+
+    public boolean onTouchEvent(MotionEvent touchEvent) {
+        switch (touchEvent.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                x1 = touchEvent.getX();
+                y1 = touchEvent.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                x2 = touchEvent.getX();
+                y2 = touchEvent.getY();
+                if (x1 > x2) {
+                    textToSpeech.stop();
+                    startVoiceInput();
+                }
+                break;
+        }
+        return false;
+    }
+
+    private void startVoiceInput() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Hello, How can I help you?");
+        try {
+            startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+        } catch (ActivityNotFoundException a) {
+            a.printStackTrace();
+        }
+    }
+
+
     private void testHyperparameter()
     {
 
@@ -1068,66 +1117,103 @@ try {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            if (requestCode == SELECT_PICTURE) {
-                Uri selectedImageUri = data.getData();
-                try {
-                    InputImage impphoto=InputImage.fromBitmap(getBitmapFromUri(selectedImageUri),0);
-                    detector.process(impphoto).addOnSuccessListener(new OnSuccessListener<List<Face>>() {
-                        @Override
-                        public void onSuccess(List<Face> faces) {
+            switch (requestCode) {
+                case SELECT_PICTURE:
 
-                            if(faces.size()!=0) {
-                                recognize.setText("Recognize");
-                                add_face.setVisibility(View.VISIBLE);
-                                reco_name.setVisibility(View.INVISIBLE);
-                                face_preview.setVisibility(View.VISIBLE);
-                                preview_info.setText("1.Bring Face in view of Camera.\n\n2.Your Face preview will appear here.\n\n3.Click Add button to save face.");
-                                Face face = faces.get(0);
+                    Uri selectedImageUri = data.getData();
+                    try {
+                        InputImage impphoto = InputImage.fromBitmap(getBitmapFromUri(selectedImageUri), 0);
+                        detector.process(impphoto).addOnSuccessListener(new OnSuccessListener<List<Face>>() {
+                            @Override
+                            public void onSuccess(List<Face> faces) {
+
+                                if (faces.size() != 0) {
+                                    recognize.setText("Recognize");
+                                    add_face.setVisibility(View.VISIBLE);
+                                    reco_name.setVisibility(View.INVISIBLE);
+                                    face_preview.setVisibility(View.VISIBLE);
+                                    preview_info.setText("1.Bring Face in view of Camera.\n\n2.Your Face preview will appear here.\n\n3.Click Add button to save face.");
+                                    Face face = faces.get(0);
 //                                System.out.println(face);
 
-                                //write code to recreate bitmap from source
-                                //Write code to show bitmap to canvas
+                                    //write code to recreate bitmap from source
+                                    //Write code to show bitmap to canvas
 
-                                Bitmap frame_bmp= null;
-                                try {
-                                    frame_bmp = getBitmapFromUri(selectedImageUri);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                                Bitmap frame_bmp1 = rotateBitmap(frame_bmp, 0, flipX, false);
+                                    Bitmap frame_bmp = null;
+                                    try {
+                                        frame_bmp = getBitmapFromUri(selectedImageUri);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                    Bitmap frame_bmp1 = rotateBitmap(frame_bmp, 0, flipX, false);
 
-                                //face_preview.setImageBitmap(frame_bmp1);
-
-
-                                RectF boundingBox = new RectF(face.getBoundingBox());
+                                    //face_preview.setImageBitmap(frame_bmp1);
 
 
-                                Bitmap cropped_face = getCropBitmapByCPU(frame_bmp1, boundingBox);
+                                    RectF boundingBox = new RectF(face.getBoundingBox());
 
-                                Bitmap scaled = getResizedBitmap(cropped_face, 112, 112);
-                                // face_preview.setImageBitmap(scaled);
+
+                                    Bitmap cropped_face = getCropBitmapByCPU(frame_bmp1, boundingBox);
+
+                                    Bitmap scaled = getResizedBitmap(cropped_face, 112, 112);
+                                    // face_preview.setImageBitmap(scaled);
 
                                     recognizeImage(scaled);
                                     addFace();
 //                                System.out.println(boundingBox);
-                                try {
-                                    Thread.sleep(100);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
+                                    try {
+                                        Thread.sleep(100);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
                             }
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                start = true;
+                                Toast.makeText(context, "Failed to add", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        face_preview.setImageBitmap(getBitmapFromUri(selectedImageUri));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                case REQ_CODE_SPEECH_INPUT:
+                    ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    mVoiceInputTv.setText(result.get(0));
+
+                    if (mVoiceInputTv.getText().toString().equals("address")) {
+
+                        if(recognize.getText().toString().equals("Recognize"))
+                        {
                             start=true;
-                            Toast.makeText(context, "Failed to add", Toast.LENGTH_SHORT).show();
+                            textAbove_preview.setText("Recognized Face:");
+                            recognize.setText("Add Face");
+                            add_face.setVisibility(View.INVISIBLE);
+                            reco_name.setVisibility(View.VISIBLE);
+                            face_preview.setVisibility(View.INVISIBLE);
+                            preview_info.setText("");
+                            //preview_info.setVisibility(View.INVISIBLE);
                         }
-                    });
-                    face_preview.setImageBitmap(getBitmapFromUri(selectedImageUri));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                        else
+                        {
+                            textAbove_preview.setText("Face Preview: ");
+                            recognize.setText("Recognize");
+                            add_face.setVisibility(View.VISIBLE);
+                            reco_name.setVisibility(View.INVISIBLE);
+                            face_preview.setVisibility(View.VISIBLE);
+                            preview_info.setText("1.Bring Face in view of Camera.\n\n2.Your Face preview will appear here.\n\n3.Click Add button to save face.");
+
+
+                        }
+                    }
+                    if (mVoiceInputTv.getText().toString().equals("select image")) {
+
+
+                        mVoiceInputTv.setText(null);
+                    }
 
 
             }

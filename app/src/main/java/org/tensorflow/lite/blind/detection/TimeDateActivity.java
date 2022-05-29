@@ -24,7 +24,7 @@ public class TimeDateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main4);
+        setContentView(R.layout.activity_time_date);
 
         String dateTime = null;
         Calendar calendar = null;
@@ -94,7 +94,7 @@ public boolean onTouchEvent(MotionEvent touchEvent) {
                     }
                 }, 1000);
 
-                Intent intent = new Intent(TimeDateActivity.this, MainActivityNo.class);
+                Intent intent = new Intent(TimeDateActivity.this, MainActivity.class);
                 startActivity(intent);
             }
 
@@ -106,7 +106,7 @@ public boolean onTouchEvent(MotionEvent touchEvent) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     calendar = Calendar.getInstance();
                 }
-                simpleDateFormat = new SimpleDateFormat("'date is' dd-LLLL-yyyy 'and time is' KK:mm aaa ");
+                simpleDateFormat = new SimpleDateFormat("'Date is' dd-LLLL-yyyy 'and Time is' KK:mm aaa ");
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     dateTime = simpleDateFormat.format(calendar.getTime()).toString();
                 }
